@@ -3,7 +3,6 @@ import { FaRegStar } from "react-icons/fa6";
 import { GiSelfLove } from "react-icons/gi";
 import { FaOpencart } from "react-icons/fa";
 import { addToCart } from "../../Utils";
-import toast, { Toaster } from 'react-hot-toast';
 const DetailsPage = () => {
     const { id } = useParams();
     const p_id = parseInt(id);
@@ -15,7 +14,7 @@ const DetailsPage = () => {
     // add to cart btn handle
     const handleAddToCart = (product) =>{
         addToCart(product)
-        toast.success('Product Added To Cart');
+        
     }
 
 

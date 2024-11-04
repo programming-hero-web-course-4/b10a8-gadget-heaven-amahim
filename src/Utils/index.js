@@ -23,7 +23,8 @@ const  addToCart = product =>{
     const isExist = cart.find(item => item.id == product.id)
     if(isExist){
         return toast.error('Product Is Already Added');
-    } 
+    }
+    toast.success('Product Added To Cart');
     cart.push(product)
     localStorage.setItem('cart',JSON.stringify(cart))
 
