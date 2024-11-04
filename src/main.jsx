@@ -6,12 +6,37 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Root from './Components/Root/Root.jsx';
+import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
+import Home from './Components/Home/Home.jsx';
+import Dashboard from './Components/Dashboard/Dashboard.jsx';
+import Statistics from './Components/Stats/Statistics.jsx';
+import GadgetNews from './Components/GadgetNews/GadgetNews.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <Root/>,
+    errorElement: <ErrorPage/>,
+    children:[
+      {
+          path: "/",
+          element: <Home/>
+      },
+      {
+          path: "dashboard",
+          element: <Dashboard/>
+      },
+      {
+          path: "Statistics",
+          element: <Statistics/>
+      },
+      {
+        path: "gadgetnews",
+        element: <GadgetNews/>
+      }
+    ]
   },
 ]);
 
