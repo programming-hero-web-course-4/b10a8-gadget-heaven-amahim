@@ -10,7 +10,7 @@ const HomeBanner = () => {
                 <button className="text-black bg-white rounded-xl p-4">Shop Now</button>
             </div>
         </div>
-            <div className="border-2 border-white p-2 md:p-4 rounded-xl bg-white/50         backdrop-blur-md w-4/5 mx-auto md:-mt-52 -mt-8">
+            <div className="border-2 border-white p-2 md:p-4 rounded-xl  w-4/5 mx-auto md:-mt-52 -mt-8">
                 <img src="/banner.jpg" className="rounded-xl "/>
             </div>
     </div>

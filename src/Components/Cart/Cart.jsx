@@ -1,12 +1,17 @@
+
+
 import React, { useEffect, useState } from 'react';
 import { FaSortNumericDownAlt } from "react-icons/fa";
-import { getAllCarts } from '../../Utils';
+import { getAllCarts, clearCart } from '../../Utils';
 import { FaRegStar } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 const Cart = () => {
     const [products, setProducts] = useState([]);
     const [totalCost, setTotalCost] = useState(0);
+    const [showModal, setShowModal] = useState(false);  // State to control modal visibility
+    const [purchaseCost, setPurchaseCost] = useState(0);  // State to hold purchase cost
 
     useEffect(() => {
         const carts = getAllCarts();
@@ -14,15 +19,20 @@ const Cart = () => {
     }, []);
 
     useEffect(() => {
-        
         const cost = products.reduce((acc, product) => acc + product.price, 0);
         setTotalCost(cost.toFixed(2));
     }, [products]);
 
-    
     const sortByPrice = () => {
         const sortedProducts = [...products].sort((a, b) => b.price - a.price);
         setProducts(sortedProducts);
+    };
+
+    const handlePurchase = () => {
+        setPurchaseCost(totalCost);  // Set purchase cost to match total cost
+        setShowModal(true);          // Show the modal
+        clearCart();                  // Clear the cart after purchase
+        setProducts([]);              // Clear the products from the display
     };
 
     return (
@@ -38,6 +48,7 @@ const Cart = () => {
                         Sort By Price <FaSortNumericDownAlt />
                     </button>
                     <button 
+                        onClick={handlePurchase}  // Trigger purchase action
                         className='text-xl btn text-white bg-[#9538E2B7]' 
                         disabled={products.length === 0}
                     >
@@ -45,6 +56,8 @@ const Cart = () => {
                     </button>
                 </div>
             </div>
+
+            {/* Cart Items */}
             <div className='mt-5 flex-col gap-6 flex'>
                 {products.map(product => (
                     <div key={product.id} className='flex items-center justify-between rounded-xl shadow-lg py-4 px-8'>
@@ -65,6 +78,21 @@ const Cart = () => {
                     </div>
                 ))}
             </div>
+
+            {/* Modal */}
+            {showModal && (
+                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                    <div className="bg-white rounded-lg p-6 w-80 text-center flex flex-col items-center">
+                        <img src="/Group.png" alt="" />
+                        <h3 className="text-2xl font-bold mb-4">Purchase Successful!</h3>
+                        <div class="divider divider-primary"></div>
+                        <p className="text-xl">Total Purchase Cost: <strong>${purchaseCost}</strong></p>
+                        <NavLink to="/" className="mt-6 btn bg-[#792fb6b2] text-white" onClick={() => setShowModal(false)}>
+                            Close
+                        </NavLink>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
