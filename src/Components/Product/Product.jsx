@@ -15,7 +15,7 @@ const Product = ({product}) => {
                        <p>{price}$</p>
                        <div className="card-actions">
                         
-                            <Link to={`/products/${id}`} className="btn text-[#9538E2] border-[#9538E2] btn-outline">Details</Link>
+                            <Link to={`/product/${id}`} className="btn text-[#9538E2] border-[#9538E2] btn-outline">Details</Link>
                           
                        </div>
                 </div>
