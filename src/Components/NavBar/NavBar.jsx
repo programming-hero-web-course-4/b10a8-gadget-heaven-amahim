@@ -44,7 +44,7 @@ const NavBar = () => {
     );
 
     return (
-        <div className={`w-[97%] mx-auto mt-5 rounded-t-xl relative ${isHomePage ? "bg-[#9538E2]" : "bg-white"}`}>
+        <div className={`w-[97%] mx-auto mt-5 rounded-t-xl  ${isHomePage ? "bg-[#9538E2]" : "bg-white"}`}>
             {/* nav */}
             <div className="navbar md:w-4/5 md:mx-auto">
                 <div className="navbar-start">

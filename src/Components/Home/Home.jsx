@@ -11,7 +11,7 @@ const Home = () => {
         <div>
             <HomeBanner/>
 
-            <div className="text-center">
+            <div className="text-center mt-10">
                 <h3 className="text-black text-2xl md:text-3xl font-bold">Explore Cutting-Edge Gadgets</h3>
             </div>
 
