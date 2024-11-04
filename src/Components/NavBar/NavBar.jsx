@@ -77,8 +77,8 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                <a className="btn text-xl"><GiSelfLove /></a>
                 <a className="btn text-xl"><FaOpencart /></a>
+                <a className="btn text-xl"><GiSelfLove /></a>
                 </div>
             </div>
         </div>

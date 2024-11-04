@@ -11,7 +11,7 @@ const HomeBanner = () => {
             {/* banner img */}
             <div className="border-2 border-white p-2 md:p-4 rounded-xl bg-white/50 backdrop-blur-md
                 absolute  bottom-[5%] md:bottom-[-55%] left-1/2 transform -translate-x-1/2">
-                <img src="banner.jpg" className="rounded-xl "/>
+                <img src="/banner.jpg" className="rounded-xl "/>
             </div>
         </div>
     );
