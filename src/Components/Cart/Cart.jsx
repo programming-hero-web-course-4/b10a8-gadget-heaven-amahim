@@ -1,17 +1,17 @@
-
-
 import React, { useEffect, useState } from 'react';
 import { FaSortNumericDownAlt } from "react-icons/fa";
 import { getAllCarts, clearCart } from '../../Utils';
 import { FaRegStar } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 
 const Cart = () => {
+    document.title = "Cart | Gadget Heaven";
     const [products, setProducts] = useState([]);
     const [totalCost, setTotalCost] = useState(0);
-    const [showModal, setShowModal] = useState(false);  // State to control modal visibility
-    const [purchaseCost, setPurchaseCost] = useState(0);  // State to hold purchase cost
+    const [showModal, setShowModal] = useState(false);  
+    const [purchaseCost, setPurchaseCost] = useState(0); 
 
     useEffect(() => {
         const carts = getAllCarts();
@@ -29,10 +29,17 @@ const Cart = () => {
     };
 
     const handlePurchase = () => {
-        setPurchaseCost(totalCost);  // Set purchase cost to match total cost
-        setShowModal(true);          // Show the modal
-        clearCart();                  // Clear the cart after purchase
-        setProducts([]);              // Clear the products from the display
+        setPurchaseCost(totalCost);  
+        setShowModal(true);         
+        clearCart();                
+        setProducts([]);              
+    };
+
+    const removeFromCart = (id) => {
+        toast.error('Product Removed From Cart')
+        const updatedProducts = products.filter(product => product.id !== id);
+        localStorage.setItem('cart', JSON.stringify(updatedProducts)); 
+        setProducts(updatedProducts); 
     };
 
     return (
@@ -71,9 +78,11 @@ const Cart = () => {
                                 <p className="mt-2 flex gap-1">Rating: <strong>{product.rating}</strong> <FaRegStar className='text-xl' /></p>
                             </div>
                         </div>
-                        {/* delete button */}
+                        {/* dlt button */}
                         <div>
-                            <button className='btn btn-error'><MdDeleteForever /></button>
+                            <button onClick={() => removeFromCart(product.id)} className='btn btn-error'>
+                                <MdDeleteForever />
+                            </button>
                         </div>
                     </div>
                 ))}

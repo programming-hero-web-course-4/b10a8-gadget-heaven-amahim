@@ -11,7 +11,7 @@ const NavBar = () => {
             <li className={isHomePage ? "text-white" : "text-black"}>
                 <NavLink 
                     to="/" 
-                    className={({ isActive }) => isActive ? "text-[#22ecf3]" : ""}
+                    className={({ isActive }) => isActive ? "md:text-[#22ecf3]" : ""}
                 >
                     Home
                 </NavLink>
@@ -19,7 +19,7 @@ const NavBar = () => {
             <li className={isHomePage ? "text-white" : "text-black"}>
                 <NavLink 
                     to="/statistics" 
-                    className={({ isActive }) => isActive ? "text-[#9538E2]" : ""}
+                    className={({ isActive }) => isActive ? "md:text-[#9538E2]" : ""}
                 >
                     Statistics
                 </NavLink>
@@ -27,7 +27,7 @@ const NavBar = () => {
             <li className={isHomePage ? "text-white" : "text-black"}>
                 <NavLink 
                     to="/dashboard" 
-                    className={({ isActive }) => isActive ? "text-[#9538E2]" : ""}
+                    className={({ isActive }) => isActive ? "md:text-[#9538E2]" : ""}
                 >
                     Dashboard
                 </NavLink>
@@ -35,7 +35,7 @@ const NavBar = () => {
             <li className={isHomePage ? "text-white" : "text-black"}>
                 <NavLink 
                     to="/gadgetnews" 
-                    className={({ isActive }) => isActive ? "text-[#9538E2]" : ""}
+                    className={({ isActive }) => isActive ? "md:text-[#9538E2]" : ""}
                 >
                     Gadget News
                 </NavLink>
@@ -46,7 +46,7 @@ const NavBar = () => {
     return (
         <div className={`w-[97%] mx-auto mt-5 rounded-t-xl  ${isHomePage ? "bg-[#9538E2]" : "bg-white"}`}>
             {/* nav */}
-            <div className="navbar md:w-4/5 md:mx-auto">
+            <div className="navbar md:w-4/5 md:mx-auto pt-5">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -77,8 +77,24 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-4">
-                 <a className="btn text-xl"><FaOpencart /></a>
-                <a className="btn text-xl"><GiSelfLove /></a>
+                <NavLink to="dashboard/cart" className="relative">
+                    <button className="btn text-xl">
+                        <FaOpencart />
+                    </button>
+                    <div className="badge badge-error badge-md text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 rounded-full">
+                        0
+                    </div>
+                </NavLink>
+
+                <NavLink to="dashboard/wishlist" className="relative">
+                    <button className="btn text-xl">
+                        <GiSelfLove />
+                    </button>
+                    <div className="badge badge-error badge-md text-white absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2">
+                        0
+                    </div>
+                </NavLink>
+
                 </div>
             </div>
         </div>

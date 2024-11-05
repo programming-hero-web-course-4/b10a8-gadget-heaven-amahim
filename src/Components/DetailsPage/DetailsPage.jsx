@@ -6,6 +6,7 @@ import { FaOpencart } from "react-icons/fa";
 import { addToCart, addToWishlist, getAllWishlist } from "../../Utils";
 
 const DetailsPage = () => {
+    document.title = "Details | Gadget Heaven";
     const { id } = useParams();
     const p_id = parseInt(id);
     const data = useLoaderData();
@@ -15,7 +16,7 @@ const DetailsPage = () => {
     const [isInWishlist, setIsInWishlist] = useState(false);
 
     useEffect(() => {
-        // Check if product is already in the wishlist
+        // product is already in the wishlist
         const wishlist = getAllWishlist();
         const existsInWishlist = wishlist.some(item => item.id === product.id);
         setIsInWishlist(existsInWishlist);
@@ -27,7 +28,7 @@ const DetailsPage = () => {
 
     const handleAddToWishlist = (product) => {
         addToWishlist(product);
-        setIsInWishlist(true); // Disable the button after adding
+        setIsInWishlist(true);
     };
 
     return (

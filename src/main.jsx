@@ -1,7 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import App from './App.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -46,7 +45,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: "",
-            element: <Navigate to="cart" replace /> // Redirect to "cart" by default
+            element: <Navigate to="cart" replace />
           },
           {
             path: "cart",
@@ -64,7 +63,9 @@ const router = createBrowserRouter([
       },
       {
         path: "gadgetnews",
-        element: <GadgetNews />
+        element: <GadgetNews />,
+        loader: () => fetch('/news.json')
+        
       },
       {
         path: 'product/:id',

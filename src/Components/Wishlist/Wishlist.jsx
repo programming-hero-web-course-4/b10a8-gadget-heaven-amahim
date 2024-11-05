@@ -6,6 +6,7 @@ import { MdDeleteForever } from "react-icons/md";
 import toast from 'react-hot-toast';
 
 const Wishlist = () => {
+    document.title = "Wishlist | Gadget Heaven";
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const Wishlist = () => {
             addToCart(product);
             removeFromWishlist(product.id);
             setProducts(products.filter(item => item.id !== product.id)); 
-            toast.success("Product added to cart!");
+            // toast.success("Product added to cart!");
         }
     };
 

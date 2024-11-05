@@ -1,11 +1,11 @@
 
 import HomeBanner from "../HomeBanner/HomeBanner";
 import Categories from '../Categories/Categories';
-import Products from '../Products/Products';
 import { Outlet } from "react-router-dom";
 
 
 const Home = () => {
+    document.title = "Home | Gadget Heaven";
     
     return (
         <div>

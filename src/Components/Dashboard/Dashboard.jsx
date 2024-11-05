@@ -1,6 +1,7 @@
 import { Outlet, NavLink } from "react-router-dom";
 
 const Dashboard = () => {
+    document.title = "Dashboard | Gadget Heaven";
     return (
         <div>
             {/* heading divv */}
