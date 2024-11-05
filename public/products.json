@@ -29,7 +29,7 @@
         "price": 399.99,
         "desc": "A stylish smartwatch with fitness tracking features.",
         "spec": ["Heart Rate Monitor", "GPS", "Water Resistant"],
-        "stock": false,
+        "stock": true,
         "rating": 4.3
     },
     {
@@ -106,7 +106,7 @@
         "price": 699.99,
         "desc": "A flagship smartphone with cutting-edge technology.",
         "spec": ["256GB Storage", "48MP Camera", "4500mAh Battery"],
-        "stock": false,
+        "stock": true,
         "rating": 4.6
     },
     {
@@ -117,7 +117,7 @@
         "price": 799.99,
         "desc": "A budget-friendly laptop with decent performance.",
         "spec": ["8GB RAM", "256GB SSD", "Intel i5 Processor"],
-        "stock": false,
+        "stock": true,
         "rating": 4.2
     }
 ]

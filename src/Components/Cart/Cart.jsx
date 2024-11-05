@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaSortNumericDownAlt } from "react-icons/fa";
-import { getAllCarts, clearCart } from '../../Utils';
+import { getAllCarts, clearCart, removeFromCart } from '../../Utils';
 import { FaRegStar } from "react-icons/fa6";
 import { MdDeleteForever } from "react-icons/md";
 import { NavLink } from "react-router-dom";
@@ -35,11 +35,10 @@ const Cart = () => {
         setProducts([]);              
     };
 
-    const removeFromCart = (id) => {
-        toast.error('Product Removed From Cart')
-        const updatedProducts = products.filter(product => product.id !== id);
-        localStorage.setItem('cart', JSON.stringify(updatedProducts)); 
-        setProducts(updatedProducts); 
+    const handleRemoveFromCart = (productId) => {
+        removeFromCart(productId);
+        // Update local cart state
+        setProducts(prevProducts => prevProducts.filter(item => item.id !== productId));
     };
 
     return (
@@ -80,7 +79,7 @@ const Cart = () => {
                         </div>
                         {/* dlt button */}
                         <div>
-                            <button onClick={() => removeFromCart(product.id)} className='btn btn-error'>
+                            <button onClick={() => handleRemoveFromCart(product.id)} className='btn btn-error'>
                                 <MdDeleteForever />
                             </button>
                         </div>

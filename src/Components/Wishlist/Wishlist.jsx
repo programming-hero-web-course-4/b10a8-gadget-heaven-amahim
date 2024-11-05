@@ -25,6 +25,12 @@ const Wishlist = () => {
         }
     };
 
+    const handleRemoveFromWishlist = (productId) => {
+        removeFromWishlist(productId);
+        // Update local wishlist state
+        setProducts(prevProducts => prevProducts.filter(item => item.id !== productId));
+    };
+
     return (
         <div className='mt-5'>
             <div className='text-center'>
@@ -52,7 +58,12 @@ const Wishlist = () => {
                         </div>
                         {/* delete button */}
                         <div>
-                            <button className='btn btn-error'><MdDeleteForever /></button>
+                            <button 
+                                onClick={() => handleRemoveFromWishlist(product.id)}
+                                className="btn btn-error"
+                            >
+                                <MdDeleteForever />
+                            </button>
                         </div>
                     </div>
                 ))}
