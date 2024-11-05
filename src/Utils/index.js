@@ -1,8 +1,7 @@
 
-
 import toast, { Toaster } from 'react-hot-toast';
 
-// Retrieve all cart items from local storage
+//  get all item ls
 const getAllCarts = () => {
     const allCart = localStorage.getItem('cart');
     if (allCart) {
@@ -12,31 +11,29 @@ const getAllCarts = () => {
     }
 };
 
-// Add item to cart in local storage
+// Add item  loc st
 const addToCart = (product) => {
     const cart = getAllCarts();
 
-    // Check if the product already exists in the cart
     const isExist = cart.find(item => item.id === product.id);
     if (isExist) {
         toast.error('Product is already added to Cart');
-        return cart.length;  // Return current cart count if product is already added
+        return cart.length;
     }
 
-    // Add product to cart and save to local storage
     cart.push(product);
     localStorage.setItem('cart', JSON.stringify(cart));
     toast.success('Product added to Cart');
-    return cart.length;  // Return updated cart count
+    return cart.length;
 };
 
-// Clear all items from cart in local storage
+// Clear all items local storage
 const clearCart = () => {
     localStorage.removeItem('cart');
-    toast.success('All items removed from Cart');
+    
 };
 
-// Retrieve all wishlist items from local storage
+// getall wishlist  local storage
 const getAllWishlist = () => {
     const allWishlist = localStorage.getItem('wishlist');
     if (allWishlist) {
@@ -50,21 +47,35 @@ const getAllWishlist = () => {
 const addToWishlist = (product) => {
     const wishlist = getAllWishlist();
 
-    // Check if the product already exists in the wishlist
+    // already exists in the wishlist
     const isExist = wishlist.find(item => item.id === product.id);
     if (isExist) {
         toast.error('Product is already in Wishlist');
-        return wishlist.length;  // Return current wishlist count if product is already in wishlist
+        return wishlist.length;
     }
 
-    // Add product to wishlist and save to local storage
+    // Add  wishlist n save to ls
     wishlist.push(product);
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
     toast.success('Product added to Wishlist');
-    return wishlist.length;  // Return updated wishlist count
+    return wishlist.length; 
 };
 
-export { addToCart, getAllCarts, clearCart, addToWishlist, getAllWishlist };
+    const removeFromWishlist = (id) => {
+    const wishlist = getAllWishlist();
+    const updatedWishlist = wishlist.filter(item => item.id !== id);
+    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+};
+
+// Check if item is in the cart
+const isInCart = (id) => {
+    const cart = getAllCarts();
+    return cart.some(item => item.id === id);
+};
+
+
+
+export { addToCart, getAllCarts, clearCart, addToWishlist, getAllWishlist ,removeFromWishlist,isInCart};
 
 
 
