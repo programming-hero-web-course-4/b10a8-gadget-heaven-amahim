@@ -32,7 +32,7 @@ const Statistics = () => {
                 </div>
             </div>
             {/* graph */}
-            <div className="w-4/5 mx-auto mt-10 ">
+            <div className="md:w-4/5  mx-auto mt-10 ">
                 <BarChart width={1000} height={500} data={products}>
                     <Bar dataKey="price" fill="#8884d8" />
                     <XAxis dataKey="name" />

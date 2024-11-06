@@ -5,7 +5,7 @@ const Product = ({product}) => {
 
 
     return (
-        <div>
+        <div id="shopSection">
             <div className="card h-[440px] shadow-xl border-2 border-[#9538E2]">
                   <figure className="pt-4">
                        <img src={img} className="rounded-xl w-56 " />

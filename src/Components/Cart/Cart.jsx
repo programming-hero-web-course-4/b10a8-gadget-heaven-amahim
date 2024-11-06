@@ -37,7 +37,8 @@ const Cart = () => {
 
     const handleRemoveFromCart = (productId) => {
         removeFromCart(productId);
-        // Update local cart state
+        toast.error('Product removed from cart')
+        
         setProducts(prevProducts => prevProducts.filter(item => item.id !== productId));
     };
 

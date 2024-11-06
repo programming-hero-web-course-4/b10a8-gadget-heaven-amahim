@@ -27,7 +27,8 @@ const Wishlist = () => {
 
     const handleRemoveFromWishlist = (productId) => {
         removeFromWishlist(productId);
-        // Update local wishlist state
+       
+        toast.error('Product removed from wishlist')
         setProducts(prevProducts => prevProducts.filter(item => item.id !== productId));
     };
 
